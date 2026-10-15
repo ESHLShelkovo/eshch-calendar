@@ -10,7 +10,7 @@ const db=cloudReady?window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY)
 (async function handlePasswordRecovery(){
   const params = new URLSearchParams(window.location.search);
   const hashParams = new URLSearchParams(window.location.hash.replace(/^#/, ""));
-  const isRecovery = params.get("type") === "recovery" || hashParams.get("type") === "recovery";
+  const isRecovery = params.get("type") === "recovery" || hashParams.get("type") === "recovery" || params.has("code");
   if (!isRecovery) return;
   if (!db) return;
   const style = document.createElement("style");
